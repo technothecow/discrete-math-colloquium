@@ -1,0 +1,75 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+%\usepackage{indentfirst}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage{ stmaryrd }
+\usepackage{ulem}
+\usepackage{ dsfont }
+\usepackage{tikzsymbols}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+% Эта штука делает так, что у первого абзаца есть отступ. Почему-то по дефолту в техе все отступы начинаются со второго. Можешь закомментировать и посмотреть, что из этого получится
+\usepackage{indentfirst}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\NN}{\mathcal{N}}
+
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\usepackage{hwspecial}
+
+%$$\includegraphics{}$$
+
+\title{Коллоквиум по дискретной математике 2}
+\date{}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Логика и машины Тьюринга}
+
+\subsection{Структуры и сигнатуры. Нормальные структуры. Изоморфизм структур.}
+
+Структура -- кортеж множеств $(M, \FF, \RR, \CC)$, где 
+\begin{enumerate}
+    \item $M$ -- непустое множество, \textit{носитель структуры}
+    \item $\FF$ -- множество функций вида $f\colon M^n\to M$
+    \item $\RR$ -- множество кортежей из $M$
+    \item $\CC$ -- подмножество $M$
+\end{enumerate}
+
+Сигнатура -- кортеж попарно непересекающихся множеств $(Fnc,Prd,Cnst)$, где $Fnc$ -- множество функциональных символов, $Prd$ -- непустое множество предикатных символов и $Cnst$ -- множество константных символов. (просто набор символов)
+
+*$\sigma$-структура (или интерпретация сигнатуры $\sigma$) -- это формально кортеж $\MM = (M,\FF,\RR,\CC,\II)$, где $\II(Fnc)=\FF,~\II(Prd)=\RR$ и $\II(Cnst)=\CC$. Вводим обозначения: $\II(Fnc)=f^\MM$, $\II(Prd)=R^\MM$ и $\II(Cnst)=c^\MM$. Для задания $\sigma$-структуры достаточно только $M$ и $\II$.
+
+Нормальная структура -- содержащая двувалентный предикатный символ ``=`` $:=~\{(a, a) \in M^2~|~a \in M\}$, где $M$ -- носитель структуры.
+
+% **Инъекция -- отображение такое, что из $f(x_1)=f(x_2)$ следует $x_1=x_2$.
+
+Изоморфизм структур: интепретации $\MM$ и $\NN$ сигнатуры $\sigma$ с носителями $M$ и $N$ соответственно изоморфны если существует биекция $\eta \colon M \to N$ для которой выполняются следующие свойства:
+\begin{enumerate}
+    \item $\eta(f^\MM(a_1,\ldots,a_n))=f^\NN(\eta(a_1),\ldots,\eta(a_n))$
+    \item $(a_1,\ldots,a_n)\in R^\MM \iff (\eta(a_1),\ldots,\eta(a_n))\in R^\NN$
+    \item $\eta(c^\MM) = c^\NN$
+\end{enumerate}
+
+\end{document}
