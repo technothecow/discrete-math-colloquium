@@ -167,4 +167,21 @@ TODO: дополнить доказательствами
 
 Квантор всеобщности и общезначимость: формула $\varphi$ общезначима $\iff$ формула $\forall y\varphi$ общезначима
 
+% Основные эквивалентности логики первого порядка [F, 24]. Замена подформулы на эквивалентную. [F, 26, 30]
+\subsection{Основные эквивалентности логики первого порядка. Замена подформулы на эквивалентную.}
+
+Основные эквивалентности логики первого порядка для произвольных $\varphi$ и $\psi$:
+
+\begin{enumerate}
+    \item Пусть $x$ не является параметром $\psi$, тогда $\forall\{\exists\} x (\varphi \land\{\lor\} \psi) \equiv \forall\{\exists\}x\varphi\land\{\lor\}\psi$ (итого 4 равенства)
+    \item $\forall x (\varphi\land\psi) = \forall x\varphi \land \forall x\psi$
+    \item $\forall x (\varphi\lor\psi) = \forall x\varphi \lor \forall x\psi$
+    \item $\lnot\forall x\varphi \equiv \exists x \lnot \varphi$
+    \item $\lnot\exists x\varphi \equiv \forall x \lnot \varphi$
+\end{enumerate}
+
+Пусть $\varphi$ -- какая-то формула, $\varphi\equiv\varphi'$, тогда замена $\varphi$ на $\varphi'$ эквивалентна в случаях использования логического и, или, не, импликации, "тогда и только тогда", квантора всеобщности и существования.
+
+Замена подформулы на эквивалентную: пусть $\varphi\equiv\varphi'$ и $\psi'$ была получена путем замены вхождений $\varphi$ в $\psi$ на $\varphi'$, тогда $\psi\equiv\psi'$.
+
 \end{document}
