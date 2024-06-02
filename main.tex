@@ -593,4 +593,11 @@ T-Предикат: пусть $U$ - у.в.ф. и $\UU$ - программа, в
 
 Теперь магия: $W(s(n),x)=W(\langle l,n\rangle,x)=U(\pi^1(\langle l,n \rangle),\langle \pi^2(\langle l,n \rangle),x \rangle = U(l,\langle n,x \rangle) = U_l(\langle n,x \rangle) = V'(\langle n,x \rangle) = V(\pi^1(\langle n,x \rangle),\pi^2(\langle n,x \rangle)) = V(n,x)$
 
+% Теорема Клини о неподвижной точке. [R, 44]
+\subsection{Теорема Клини о неподвижной точке}
+
+Теорема: пусть $U$ - г.у.в.ф., $f\colon\N\to\N$ - тотальная вычислимая функция, тогда существует такое $n$, что $U_n=U_{f(n)}$
+
+Доказательство: пусть $V(k,x)=U(U(k,k),x)$ - вычислимая тотальная. Из главности у.в.ф. найдется тотальная $s\colon\N\to\N$, что $U(s(k),x)=V(k,x)=U(U(k,k),x)$. Композиция $f$ и $s$ тоже вычислима, поэтому существует $t\in\N$, что $U_t=f\circ s$. Имеем $U(s(t),x)=V(t,x)=U(U(t,t),x)=U(U_t(t),x)=U((f\circ s)(t),x)=U(f(s(t)),x)$. Искомое $n=s(t)$.
+
 \end{document}
