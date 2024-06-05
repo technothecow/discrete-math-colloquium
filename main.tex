@@ -776,53 +776,35 @@ $$ W(m, x) \simeq \begin{cases}
 
 Мы получили, что индексное множество для множества $\{\zeta\}$ относительно $W$ конечно, а значит разрешимо. Но для г.у.в.ф. такого быть не может по лемме. Следовательно, $W$ является неглавной у.в.ф.
 
-\subsection{m-Сводимость и ее простейшие свойства.}
+\subsection{$m$-сводимость и её простейшие свойства}
 
-\textit{Определение.} Пусть $A, B \subseteq \mathbb{N}$. Множество $A$ $m$-сводится к множеству $B$ (обозначение $A \leqslant_m B$), если существует вычислимая тотальная функция $f: \mathbb{N} \to \mathbb{N}$, т.ч.
+Пусть $A, B \subset \N$. Будем говорить, что множество $A$ $m$-\textit{сводится} к $B$ (обозначается как $A \leq_m B$), если существует вычислимая тотальная функция $f: \N \mapsto \N$:
 
-$$ \forall x \in \mathbb{N} \: (x \in A \Longleftrightarrow f(x) \in B). $$
+$$ \forall x \in \N \ (x \in A \leftrightarrow f(x) \in B) $$
 
-Если желательно уточнить сводящую функцию $f$, будем писать $A \leqslant_m^f B$.
+\hfill
 
-\textit{Свойства.} Для любых $A, B, C \subseteq \mathbb{N}$ верно:
+\textit{Лемма (основные свойства)}: Для любых множеств $A, B, C \subset \N$ выполнено следующее:
 \begin{enumerate}
-    \item $A \leqslant_m^{\text{id}_{\mathbb{N}}} A$;
-    \item если $A \leqslant_m^f B$ и $B \leqslant_m^g C$, то $A \leqslant_m^{g \circ f} C$;
-    \item если $A \leqslant_m^f B$, то $\overline{A} \leqslant_m^f \overline{B}$;
-    \item если $A$ разрешимо и $\varnothing \ne B \subsetneq \mathbb{N}$, то $A \leqslant_m B$;
-    \item если $A \leqslant_m B$ и $B$ разрешимо, то $A$ разрешимо;
-    \item если $A \leqslant_m B$ и $B$ перечислимо, то $A$ перечислимо.
-    
+	\item{$A \leq_m^{\operatorname{id}_{\N}} A$};
+	\item{если $A \leq_m^f B$ и $B \leq_m^g C$, то $A \leq_m^{g \circ f} C$};
+	\item{если $A \leq_m^f B$, то $\overline{A} \leq_m^f \overline{B}$};
+	\item{если $A \leq_m B$ и $B$ разрешимо, то $A$ разрешимо};
+	\item{если $A \leq_m B$ и $B$ перечислимо, то $A$ перечислимо};
 \end{enumerate}
 
-Доказательство:
-\begin{enumerate}
-    \item Утверждается, что очевидно.
-    \item Утверждается, что очевидно.
-    \item Утверждается, что очевидно.
-    \item $$ \exists x, y \in \mathbb{N} \quad (x\in B \wedge y \notin B) $$
-    $$ A \text{ разрешимо } \Longrightarrow \chi_A \text{ вычислима } $$
-    $$ f(n):= x \cdot \chi_A(n)+y\cdot (1 - \chi_A(n)) \quad \text{ вычислима } $$
-    $$ n \in A \Longleftrightarrow f(n) \in B $$
-    \item $$ \exists f \forall n \: (n \in A \Leftrightarrow f(n) \in B) $$
-    $$ B \text{ разрешимо } \Leftrightarrow \chi_B \text{вычислима} $$
-    $$ \chi_A(n)=1 \Leftrightarrow n \in A \Leftrightarrow f(n) \in B \Leftrightarrow \chi_B(f(n))=1 \Leftrightarrow (\chi_B \circ f)(n) $$
-    $$ \chi_A = \chi_B \circ f \text{ вычислима } \Longrightarrow \chi_A \text{ вычислима } \Longrightarrow A \text{ разрешимо } $$
-    \item $$ \exists f \forall n \: (n \in A \Leftrightarrow f(n) \in B) $$
-    $$ B \text{ перечислимо } \Leftrightarrow \omega_B \text{вычислима} $$
-    $$ \omega_A(n)=1 \Leftrightarrow n \in A \Leftrightarrow f(n) \in B \Leftrightarrow \omega_B(f(n))=1 \Leftrightarrow (\omega_B \circ f)(n) $$
-    $$ \omega_A = \omega_B \circ f \text{ вычислима } \Longrightarrow \omega_A \text{ вычислима } \Longrightarrow A \text{ перечислимо } $$
-\end{enumerate}
+\textit{Доказательство:} первые 3 пункта непосредственно следуют из определения. Докажем утверждения 4 и 5: предположим, что $x \in A \leftrightarrow f(x) \in B$ выполнено для некоторой тотальной функции $f$ и всех $x \in \N$. Но тогда $\chi_{A}(x) = \chi_{B}(f(x))$ и $\omega_{A}(x) \equiv \omega_{B}(f(x))$, а значит функция $\chi_{A}$ будет вычислима, если такова $\chi_B$, то же самое верно и для $\omega_{A}$ и $\omega_{B}$.
 
-\textit{Следствие.} $\leqslant_m$ не антисимметрично, то есть если $A \leqslant_m B $ и $B \leqslant A$, то нельзя утверждать, что $A = B$
+\hfill
 
-Контрпример:
+\textit{Упражнение (69)} Пусть множество $A$ разрешимо и множество $B$ нетривиально, то есть $\emptyset \neq B \subsetneq \N$. Покажем, что $A \leq_m B$. 
+Поскольку $A$ разрешимо, то характеристическая функция множества $A, \chi_A, $  вычислима. Поскольку $B$ нетривиально, то существуют некоторые $n, m \in \N$, что $n \in B, m \notin B$. В таком случае модифицируем $\chi_A$ до функции $f(x): f(x) = n$ при $x \in A$ и $f(x) = m$ при $x \notin A$. Очевидно, что $f$ сводит $A$ к $B$. Отметим, что нетривиальность $B$ мы использовали при выборе чисел $n, m$, это необходимое и достаточное условие их существования.
 
-$$ E := \{ 2n \mid \exists n \in \mathbb{N} \} $$
-$$ \overline{E} = \mathbb{N} \setminus E $$
-$$ f(n) = n + 1 $$
-$$ E \leqslant_m^{f(n)} \overline{E} \Longrightarrow \text{ (по пункту 3) }  \overline{E} \leqslant_m^{f(n)} E $$
-$$ E \ne \overline{E} $$
+\hfill
+
+\textit{Упражнение (70)} Пусть $A \leq_m B$ и $B \leq_m A$. Верно ли, что в таком случае $A = B$.
+Покажем, что это неверно: пусть $A$ есть множество четных чисел и $B$ и множество нечетных чисел. Очевидно, как будет выглядеть сводимость $A$ к $B$ и $B$ к $A$, но эти множества даже не пересекаются.
+Формально в билет не вошли несколько примеров и упражнений (71-75), но рекомендуется с ними также ознакомиться.
 
 \subsection{Индексные множества. Теорема Райса-Успенского: доказательство с помощью
 сведения. Пример применения.}
@@ -851,5 +833,17 @@ $$ n \notin K \Rightarrow V_n = \zeta \Rightarrow U_{s(n)} = \zeta \notin \FF \R
 
 $$ \forall n \: (n \in K \Leftrightarrow s(n) \in F)$$
 $$ K \leqslant_m^s F \text{ и } K \text{ неразрешимо } \Rightarrow F \text{ неразрешимо } $$
+
+% Пример неперечислимого множества с неперечислимым дополнением. [R, один из 81, 83, 84, 86]
+\subsection{Пример неперечислимого множества с неперечислимым дополнением.}
+
+% Теорема Райса–Шапиро. Неперечислимость индексов одной функции относительно г. у. в. ф. [R, 88, 89]
+\subsection{Теорема Райса–Шапиро. Неперечислимость индексов одной функции относительно г. у. в. ф.}
+
+% Классы Σn и Πn арифметической иерархии и их простейшие свойства. [R, с. 22–23; 91]
+\subsection{Классы $\Sigma_n$ и $\prod_n$ арифметической иерархии и их простейшие свойства.}
+
+% Классы Σn и Πn арифметической иерархии. Включение Σn ∪ Πn ( Σn+1 ∩ Πn+1 при n > 0 (без доказательства строгости). [R, с. 22–23; 93]
+\subsection{Классы $\Sigma_n$ и $\prod_n$ арифметической иерархии. Включение $\Sigma_n$ и $\prod_n$ ( $\Sigma_{n+1} \cap \prod_{n+1}$ при $n > 0$ (без доказательства строгости).}
 
 \end{document}
