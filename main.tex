@@ -758,7 +758,7 @@ $$ h(n) = \begin{cases}
 
 \textit{Существование неглавной у.в.ф.} Пусть $U$ -- произвольная у.в.ф и $\zeta$ -- нигде не определенная функция. Рассмотрим $A=\{n\in\mathbb{N} \mid \dom U_n \ne \varnothing \}$ -- индексное множество $\mathcal{A}$ для функций, определенных хотя бы в одной точке. Докажем, что $A$ -- перечислимо. Действительно, для всех $n$
 
-$$ n \in A \leftrightarrow \exists x \exists k \: T(n, x, k) $$
+$$ n \in A \Leftrightarrow \exists x \exists k \: T(n, x, k) $$
 
 т.е. множество A является проекцией разрешимого множества T, а значит, перечислимо.
 
@@ -775,5 +775,53 @@ $$ W(m, x) \simeq \begin{cases}
 аргумента: если $\dom g = \varnothing$, то $g = \zeta = W_0$. Если $\dom g \ne \varnothing$, то $g=U_n\in \mathcal{A}$ влечет $n \in A$, откуда $g=U_{f(k)} = W_{k + 1}$ для подходящего $k$. Единственным индексом $\zeta$ относительно $W$ оказывается $0$. 
 
 Мы получили, что индексное множество для множества $\{\zeta\}$ относительно $W$ конечно, а значит разрешимо. Но для г.у.в.ф. такого быть не может по лемме. Следовательно, $W$ является неглавной у.в.ф.
+
+\subsection{m-Сводимость и ее простейшие свойства.}
+
+\textit{Определение.} Пусть $A, B \subseteq \mathbb{N}$. Множество $A$ $m$-сводится к множеству $B$ (обозначение $A \leqslant_m B$), если существует вычислимая тотальная функция $f: \mathbb{N} \to \mathbb{N}$, т.ч.
+
+$$ \forall x \in \mathbb{N} \: (x \in A \Longleftrightarrow f(x) \in B). $$
+
+Если желательно уточнить сводящую функцию $f$, будем писать $A \leqslant_m^f B$.
+
+\textit{Свойства.} Для любых $A, B, C \subseteq \mathbb{N}$ верно:
+\begin{enumerate}
+    \item $A \leqslant_m^{\text{id}_{\mathbb{N}}} A$;
+    \item если $A \leqslant_m^f B$ и $B \leqslant_m^g C$, то $A \leqslant_m^{g \circ f} C$;
+    \item если $A \leqslant_m^f B$, то $\overline{A} \leqslant_m^f \overline{B}$;
+    \item если $A$ разрешимо и $\varnothing \ne B \subsetneq \mathbb{N}$, то $A \leqslant_m B$;
+    \item если $A \leqslant_m B$ и $B$ разрешимо, то $A$ разрешимо;
+    \item если $A \leqslant_m B$ и $B$ перечислимо, то $A$ перечислимо.
+    
+\end{enumerate}
+
+Доказательство:
+\begin{enumerate}
+    \item Утверждается, что очевидно.
+    \item Утверждается, что очевидно.
+    \item Утверждается, что очевидно.
+    \item $$ \exists x, y \in \mathbb{N} \quad (x\in B \wedge y \notin B) $$
+    $$ A \text{ разрешимо } \Longrightarrow \chi_A \text{ вычислима } $$
+    $$ f(n):= x \cdot \chi_A(n)+y\cdot (1 - \chi_A(n)) \quad \text{ вычислима } $$
+    $$ n \in A \Longleftrightarrow f(n) \in B $$
+    \item $$ \exists f \forall n \: (n \in A \Leftrightarrow f(n) \in B) $$
+    $$ B \text{ разрешимо } \Leftrightarrow \chi_B \text{вычислима} $$
+    $$ \chi_A(n)=1 \Leftrightarrow n \in A \Leftrightarrow f(n) \in B \Leftrightarrow \chi_B(f(n))=1 \Leftrightarrow (\chi_B \circ f)(n) $$
+    $$ \chi_A = \chi_B \circ f \text{ вычислима } \Longrightarrow \chi_A \text{ вычислима } \Longrightarrow A \text{ разрешимо } $$
+    \item $$ \exists f \forall n \: (n \in A \Leftrightarrow f(n) \in B) $$
+    $$ B \text{ перечислимо } \Leftrightarrow \omega_B \text{вычислима} $$
+    $$ \omega_A(n)=1 \Leftrightarrow n \in A \Leftrightarrow f(n) \in B \Leftrightarrow \omega_B(f(n))=1 \Leftrightarrow (\omega_B \circ f)(n) $$
+    $$ \omega_A = \omega_B \circ f \text{ вычислима } \Longrightarrow \omega_A \text{ вычислима } \Longrightarrow A \text{ перечислимо } $$
+\end{enumerate}
+
+\textit{Следствие.} $\leqslant_m$ не антисимметрично, то есть если $A \leqslant_m B $ и $B \leqslant A$, то нельзя утверждать, что $A = B$
+
+Контрпример:
+
+$$ E := \{ 2n \mid \exists n \in \mathbb{N} \} $$
+$$ \overline{E} = \mathbb{N} \setminus E $$
+$$ f(n) = n + 1 $$
+$$ E \leqslant_m^{f(n)} \overline{E} \Longrightarrow \text{ (по пункту 3) }  \overline{E} \leqslant_m^{f(n)} E $$
+$$ E \ne \overline{E} $$
 
 \end{document}
