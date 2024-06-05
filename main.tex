@@ -903,6 +903,17 @@ $$ \vec{x} \in A \leftrightarrow \forall y_1 \exists y_2 \forall y_3 \exists y_4
 \end{enumerate}
 
 % Классы Σn и Πn арифметической иерархии. Включение Σn ∪ Πn ( Σn+1 ∩ Πn+1 при n > 0 (без доказательства строгости). [R, с. 22–23; 93]
-\subsection{Классы $\Sigma_n$ и $\prod_n$ арифметической иерархии. Включение $\Sigma_n$ и $\prod_n$ ( $\Sigma_{n+1} \cap \prod_{n+1}$ при $n > 0$ (без доказательства строгости).}
+\subsection{Классы $\sum_n$ и $\prod_n$ арифметической иерархии. Включение $\sum_n$ и $\prod_n$ ( $\sum_{n+1} \cap \prod_{n+1}$ при $n > 0$ (без доказательства строгости).}
+Определения классов $\sum_n^{(s)}$ и $\prod_n^{(s)}$ есть в предыдущем билете. Докажем результат о включении:
+
+
+\textit{Лемма (93). При всех $n \in \N$ и $s \in \N_{+}$ верно $\sum_n^{(s)} \cup \prod_n^{(s)} \subseteq \sum_{n+1}^{(s)} \cap \prod_{n+1}^{(s)}$}
+
+\textit{Доказательство:} Допустим, что $A \in \sum_{n}^{(s)}$. Тогда найдется разрешимое множество $R \subseteq \N^{n + s}$, что при всех $\vec{x} \in \N^{s}$:
+$$\vec{x} \in A \leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n R(y_1, y_2 \ldots y_n, \vec{x}).$$
+Из логики известно, что навешивание квантора по переменной, не имеющий (свободных) вхождений в формулу—так называемого фиктивного квантора—не меняет эту формулу с точностью до эквивалентности. Поэтому выбрав переменную $w$ отличной от всех $x_i$ и $y_i$ получим:
+$$\vec{x} \in A \leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \overline{Q} w R(y_1, y_2 \ldots y_n, \vec{x}).$$ откуда сразу же следует $A \in \sum_{n+1}^{(s)}$ и:
+$$\vec{x} \in A \leftrightarrow \forall w \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n R(y_1, y_2 \ldots y_n, \vec{x}).$$ откуда $A \in \prod_{n+1}^{(s)}$.
+Подходя несколько более формально к нашему определению иерархии, мы все же обязаны сделать $R$ зависящим от $w$, но тогда, конечно, мы можем оставить эту зависимость фиктивной: $\forall w, \vec{y}, \vec{x}$ положим $R'(w, y, x) = R(y, z)$, откуда следует разрешимость $R'$. Мы получили, что $\sum_{n}^{(s)} \subseteq \sum_{n+1}^{(s)} \cap \prod_{n+1}^{(s)}$. Случай $A \in \prod_n^{(s)}$ рассматривается абсолютно аналогично или сослаться на лемму из предыдущего билета (91 в оригинальной нумерации). Тогда $\overline{A} \in \prod_{n}^{(s)} \subseteq \sum_{n+1}^{(s)} \cap \prod_{n+1}^{(s)} \implies A = \overline{\overline{A}} \in \sum_{n+1}^{(s)} \cap \prod_{n+1}^{(s)}$
 
 \end{document}
