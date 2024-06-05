@@ -824,4 +824,32 @@ $$ f(n) = n + 1 $$
 $$ E \leqslant_m^{f(n)} \overline{E} \Longrightarrow \text{ (по пункту 3) }  \overline{E} \leqslant_m^{f(n)} E $$
 $$ E \ne \overline{E} $$
 
+\subsection{Индексные множества. Теорема Райса-Успенского: доказательство с помощью
+сведения. Пример применения.}
+
+Индексные множества и пример применение см. билет 2.16
+
+\textit{Теорема Райса-Успенского.} Пусть $U$ -- г.у.в.ф. и $\varnothing \ne \FF \subsetneq \RR$. Тогда индексное множество \\ $F = \{ n\in \mathbb{N} \mid U_n \in \FF \}$ неразрешимо.
+
+Доказательство с помощью сведения: без ограничения общности скажем, что $\zeta \notin \FF$ (в противном случае проделаем аналогичные рассуждения для $\overline{\FF}$, потому что если множество неразрешимо, то неразрешимо и его дополнение)
+
+$$ \FF \ne \varnothing \Rightarrow \exists f in \FF $$
+
+Рассмотрим функцию $V: \mathbb{N}^2 \stackrel{p}{\to} \mathbb{N}$
+
+$$ V(n, x) \simeq \begin{cases}
+    f(x), & n \in K \\
+    \text{неопр}, & n \notin K
+\end{cases} $$
+
+$$ V(n, x) \simeq \omega_K(n) \cdot f(x) $$
+
+$U$ -- главная $ \Rightarrow \exists $ вычислимая тотальная $s: \mathbb{N} \to \mathbb{N} $, т.ч. $\forall n \quad U_{s(n)}=V_n$
+
+$$ n \in K \Rightarrow V_n = f \Rightarrow U_{s(n)} = f \in \FF \Rightarrow s(n) \in F $$
+$$ n \notin K \Rightarrow V_n = \zeta \Rightarrow U_{s(n)} = \zeta \notin \FF \Rightarrow s(n) \notin F $$
+
+$$ \forall n \: (n \in K \Leftrightarrow s(n) \in F)$$
+$$ K \leqslant_m^s F \text{ и } K \text{ неразрешимо } \Rightarrow F \text{ неразрешимо } $$
+
 \end{document}
