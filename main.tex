@@ -1,4 +1,3 @@
-%:
 \documentclass[a4paper, 10pt]{article}
 \usepackage[unicode=true, colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
 \usepackage[T2A]{fontenc}
@@ -759,7 +758,7 @@ $$ h(n) = \begin{cases}
 
 \textit{Существование неглавной у.в.ф.} Пусть $U$ -- произвольная у.в.ф и $\zeta$ -- нигде не определенная функция. Рассмотрим $A=\{n\in\mathbb{N} \mid \dom U_n \ne \varnothing \}$ -- индексное множество $\mathcal{A}$ для функций, определенных хотя бы в одной точке. Докажем, что $A$ -- перечислимо. Действительно, для всех $n$
 
-$$ n \in A \leftrightarrow \exists x \exists k \: T(n, x, k) $$
+$$ n \in A \Leftrightarrow \exists x \exists k \: T(n, x, k) $$
 
 т.е. множество A является проекцией разрешимого множества T, а значит, перечислимо.
 
@@ -807,8 +806,33 @@ $$ \forall x \in \N \ (x \in A \leftrightarrow f(x) \in B) $$
 Покажем, что это неверно: пусть $A$ есть множество четных чисел и $B$ и множество нечетных чисел. Очевидно, как будет выглядеть сводимость $A$ к $B$ и $B$ к $A$, но эти множества даже не пересекаются.
 Формально в билет не вошли несколько примеров и упражнений (71-75), но рекомендуется с ними также ознакомиться.
 
-% Индексные множества. Теорема Райса-Успенского: доказательство с помощью сведения. Пример применения. [R, с. 17; 62 или др.]
-\subsection{Индексные множества. Теорема Райса-Успенского: доказательство с помощью сведения. Пример применения.}
+\subsection{Индексные множества. Теорема Райса-Успенского: доказательство с помощью
+сведения. Пример применения.}
+
+Индексные множества и пример применение см. билет 2.16
+
+\textit{Теорема Райса-Успенского.} Пусть $U$ -- г.у.в.ф. и $\varnothing \ne \FF \subsetneq \RR$. Тогда индексное множество \\ $F = \{ n\in \mathbb{N} \mid U_n \in \FF \}$ неразрешимо.
+
+Доказательство с помощью сведения: без ограничения общности скажем, что $\zeta \notin \FF$ (в противном случае проделаем аналогичные рассуждения для $\overline{\FF}$, потому что если множество неразрешимо, то неразрешимо и его дополнение)
+
+$$ \FF \ne \varnothing \Rightarrow \exists f in \FF $$
+
+Рассмотрим функцию $V: \mathbb{N}^2 \stackrel{p}{\to} \mathbb{N}$
+
+$$ V(n, x) \simeq \begin{cases}
+    f(x), & n \in K \\
+    \text{неопр}, & n \notin K
+\end{cases} $$
+
+$$ V(n, x) \simeq \omega_K(n) \cdot f(x) $$
+
+$U$ -- главная $ \Rightarrow \exists $ вычислимая тотальная $s: \mathbb{N} \to \mathbb{N} $, т.ч. $\forall n \quad U_{s(n)}=V_n$
+
+$$ n \in K \Rightarrow V_n = f \Rightarrow U_{s(n)} = f \in \FF \Rightarrow s(n) \in F $$
+$$ n \notin K \Rightarrow V_n = \zeta \Rightarrow U_{s(n)} = \zeta \notin \FF \Rightarrow s(n) \notin F $$
+
+$$ \forall n \: (n \in K \Leftrightarrow s(n) \in F)$$
+$$ K \leqslant_m^s F \text{ и } K \text{ неразрешимо } \Rightarrow F \text{ неразрешимо } $$
 
 % Пример неперечислимого множества с неперечислимым дополнением. [R, один из 81, 83, 84, 86]
 \subsection{Пример неперечислимого множества с неперечислимым дополнением.}
