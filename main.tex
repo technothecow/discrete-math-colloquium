@@ -843,6 +843,60 @@ $$ K \leqslant_m^s F \text{ и } K \text{ неразрешимо } \Rightarrow F
 % Классы Σn и Πn арифметической иерархии и их простейшие свойства. [R, с. 22–23; 91]
 \subsection{Классы $\Sigma_n$ и $\prod_n$ арифметической иерархии и их простейшие свойства.}
 
+Для начала, определим классы $\sum_0^{(s)}$ и $\prod_0^{(s)}$ как множества всевозможных разрешимых подмножеств множества $\N^s, s > 0$, с этими объектами мы хорошо знакомы. Арифметическая иерархия будет строиться путем навешивания кванторов на данные множества:
+Множество $A \subseteq \N^S$ принадлежит классу $\sum_n^{(s)} (n,s \geq 0)$, тогда и только тогда, когда существует разрешимое свойство $R \subseteq \N^{n+s}$, такое что при всех $\vec{x} \in \N^{s}$ верно:
+
+$$ \vec{x} \in A \leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n R(y_1, y_2, \ldots y_n, \vec{x}),$$
+где квантор $Q$ есть $\forall$ при четных $n$ и $\exists$ при нечетных. Иначе говоря, на свойство $R$ навешены $n$ чередующихся кванторов, причем самый внешний, квантор существования.
+Двойственным образом, определим $\prod_n^{(s)}$: Множество $A \subseteq \N^S$ принадлежит классу $\prod_n^{(s)} (n,s \geq 0)$, тогда и только тогда, когда существует разрешимое свойство $R \subseteq \N^{n+s}$, такое что при всех $\vec{x} \in \N^{s}$ верно:
+
+$$ \vec{x} \in A \leftrightarrow \forall y_1 \exists y_2 \forall y_3 \exists y_4 \ldots Q y_n R(y_1, y_2, \ldots y_n, \vec{x}),$$
+где квантор $Q$ есть $\exists$ при четных $n$ и $\forall$ при нечетных. Иначе говоря, на свойство $R$ навешены $n$ чередующихся кванторов, причем самый внешний, квантор всеобщности. 
+
+Для удобства абстрагируемся от размерности и положим $\sum_n = \cup_{s > 0} \sum_n^{(s)}$ и аналогично $\prod_n = \cup_{s > 0} \prod_n^{(s)}$.
+
+\textit{Лемма (91).} Для любых множеств $A, B \in \N^{s}$ верно:
+
+\begin{enumerate}
+	\item{$A \in \sum_{n+1}$ тогда и только тогда, когда существует множество $C \in \prod_n^{(1 + s)}$, что $\vec(x) \in A \leftrightarrow \exists y C(y, \vec{x})$ при всех $\vec{x}$.}
+	\item{$A \in \prod_{n+1}$ тогда и только тогда, когда существует множество $C \in \sum_n^{(1 + s)}$, что $\vec(x) \in A \leftrightarrow \forall y C(y, \vec{x})$ при всех $\vec{x}$.}
+	\item{если $\vec{x} \in A \leftrightarrow \exists y C(y, \vec{x})$, для некоторого $C \in \sum_n$} и всех $\vec{x}$, то $A \in \sum_n$;
+	\item{если $\vec{x} \in A \leftrightarrow \forall y C(y, \vec{x})$, для некоторого $C \in \prod_n$} и всех $\vec{x}$, то $A \in \prod_n$;
+	\item{если $A, B \in \sum_n$, то $A \cap B, A \cup B \in \sum_n$, но $\lnot A \in \prod_n$};
+	\item{если $A, B \in \prod_n$, то $A \cap B, A \cup B \in \prod_n$, но $\lnot A \in \sum_n$}.
+\end{enumerate}
+Докажем по порядку эти утверждения:
+\begin{enumerate}
+	\item{Очевидно из определения};
+	\item{Очевидно из определения};
+	\item{Поскольку $C \in \sum_n$, то для некоторого $R \subseteq \N^{1 + n + s}$ будем иметь:
+		$$\vec{x} \in A \leftrightarrow \exists y \exists y_1 \forall y_2 \exists y_3 \ldots Q y_n \ R(y, y_1, y_2, \ldots, y_n, \vec{x}) \ (\forall \vec{x} \in \N^s).$$
+		Объединим первые 2 квантора существования в 1 при помощи кодирования пар:
+		$$\vec{x} \in A \leftrightarrow \exists z \forall y_2 \exists y_3 \ldots Q y_n \ R(\pi^{1}(z), \pi^{2}(z), y_2, \ldots, y_n, \vec{x}) \ (\forall \vec{x} \in \N^s).$$
+		В силу разрешимости и тотальности функции $\pi^{i}$ получаем, что $(n+s)$-мерное множество $R'$, где $R'(z, y_2, \ldots, y_n, \vec{x}) \leftrightarrow R(\pi^{1}(z), \pi^{2}(z), y_2, \ldots y_n, \vec{x})$, разрешимо. Окончательно получаем, что:
+		$$\vec{x} \in A \leftrightarrow \exists z \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \ R'(z, y_2, \ldots, y_n, \vec{x})$$
+		при всех $\vec{x} \in \N^s$, что по определению означает $A \in \sum_n$.
+	};
+	\item{Доказывается аналогично предыдущему пункту};
+	\item{По предположению для каждого $\vec{x} \in \N^s$ выполнены эквивалентности:
+		$$x \in A \leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \ R_1(y_1, y_2, \ldots y_n, \vec{x})$$
+		$$x \in B \leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \ R_2(y_1, y_2, \ldots y_n, \vec{x})$$
+		Для некоторых разрешимых множеств $R_1, R_2 \subseteq \N^{n+s}$. Далее мы применим известные законы логики предикатов и получим:
+		$$\lnot A(\vec{x}) \leftrightarrow \vec{x} \notin A \leftrightarrow \lnot \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \ R_1(y_1, y_2, \ldots y_n, \vec{x}) \leftrightarrow$$
+		$$\leftrightarrow \forall y_1 \lnot \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n \ R_1(y_1, y_2, \ldots y_n, \vec{x}) \leftrightarrow \ldots \leftrightarrow$$
+		$$\leftrightarrow \forall y_1 \exists y_2 \forall y_3 \exists y_4 \ldots \overline{Q} y_n \lnot R_1(y_1, y_2, \ldots y_n, \vec{x})$$
+		Здесь квантор $\overline{Q}$ есть противоположный квантору $Q$. Поскольку свойство $\lnot R_1$ остается разрешимым, то по определению имеем $\lnot A \in \prod_n$. Как известно из курса логики, связанные кванторами переменные можно переименовывать в свежие, не встречавшиеся прежде в формуле, сохраняя логическую эквивалентность. Так же известны равносильности $\mu \cap \forall x \phi \leftrightarrow \forall x (\mu \cap \phi)$ и $\mu \cap \exists x \phi \leftrightarrow \exists x (\mu \cap \phi)$, справедливые при отсутствии свободных вхождений $x$ в $\mu$. Поэтому проведем последний шаг доказательства, переименовав $y_i$ в $w_i$:
+		
+		$$(A \land B)(\vec{x}) \leftrightarrow \vec{x} \notin (A \cap B)\leftrightarrow $$
+		$$\leftrightarrow \exists y_1 \forall y_2 \exists y_3 \forall y_4 \ldots Q y_n R_1 (y_1, y_2, \ldots, y_n, \vec{x}) \land \exists w_1 \forall w_2 \exists w_3 \forall w_4 \ldots Q w_n R_1 (w_1, w_2, \ldots, w_n, \vec{x}) \leftrightarrow $$
+		$$\leftrightarrow   \exists y_1 \exists w_1 (\forall y_2 \exists y_3 \forall y_4 \ldots Q y_n R_1 (y_1, y_2, \ldots, y_n, \vec{x}) \land \forall w_2 \exists w_3 \forall w_4 \ldots Q w_n R_1 (w_1, w_2, \ldots, w_n, \vec{x})) \leftrightarrow $$
+		$$\leftrightarrow \exists y_1 \exists w_1 \forall y_2 \forall w_2 \exists y_3 \exists w_3 \ldots Q y_n Q w_n (R_1(y_1, y_2, \ldots, y_n, \vec{x}) \land R_2(w_1, w_2, \ldots, w_n, \vec{x}))$$.
+		Наконец, свойство $R' (\vec{y}, \vec{w}, \vec{x}) \leftrightarrow R_1(\vec{y}, \vec{x}) \land R_2(\vec{w}, \vec{x})$ разрешимо как логическая операция над разрешимыми. Далее мы будем применять уже установленные утверждения с первого по четвертое. Без ограничения общности, пусть $Q = \forall$. Тогда свойство $Q w_n R' (\vec{y}, \vec{w}, \vec{x})$ лежит в классе $\prod_1$ по определению, а $Q y_n Q w_n R' (\vec{y}, \vec{w}, \vec{x})$ лежит там же в силу утверждения 4. Но тогда $\exists y_{n-1} \exists w_{n-1} Q y_n Q w_n R'(\vec{y}, \vec{w}, \vec{x}) \in \sum_2$ вследствие первого и третьего утверждений. Рассуждания аналогично, индукцией по $n$, получаем, что $A \land B \in \sum_n$.
+		Случай дизъюнкции доказывается аналогично!
+	}
+	\item{Доказывается аналогично предыдущему пункту}.
+\end{enumerate}
+
 % Классы Σn и Πn арифметической иерархии. Включение Σn ∪ Πn ( Σn+1 ∩ Πn+1 при n > 0 (без доказательства строгости). [R, с. 22–23; 93]
 \subsection{Классы $\Sigma_n$ и $\prod_n$ арифметической иерархии. Включение $\Sigma_n$ и $\prod_n$ ( $\Sigma_{n+1} \cap \prod_{n+1}$ при $n > 0$ (без доказательства строгости).}
 
